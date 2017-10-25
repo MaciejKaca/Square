@@ -119,7 +119,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="editor.cpp" />
+    <ClCompile Include="editormenu.cpp" />
+    <ClCompile Include="help.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="options.cpp" />
+    <ClCompile Include="save_frame.cpp" />
+    <ClCompile Include="text_input.cpp" />
+    <ClCompile Include="weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="character.h" />
+    <ClInclude Include="editor.h" />
+    <ClInclude Include="editormenu.h" />
+    <ClInclude Include="help.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="options.h" />
+    <ClInclude Include="save_frame.h" />
+    <ClInclude Include="Text_input.h" />
+    <ClInclude Include="weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

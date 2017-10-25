@@ -1,0 +1,108 @@
+#pragma once
+#include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
+#include <iostream>
+#include <string>
+using namespace sf;
+using namespace std;
+class options
+{
+	public:
+		options();
+		int display(RenderWindow &window);
+		string language();
+		void load(string language);
+		int keyup;
+		int keydown;
+		int keyleft;
+		int keyright;
+		int keyfiremode;
+		int keysprint;
+		ContextSettings windowsettings();
+		int screen_mode();
+	private:
+		SoundBuffer shot;
+		Sound shotsound;
+		void repetition(RenderWindow &window);
+		int leftlongest();
+		int rightlongest();
+		void draw(RenderWindow &window);
+		bool pressed;
+		int fullscreen_state;
+		int selectorwidht;
+		int selection_pos_x;
+		int selection_pos_y;
+		int selection_widht;
+		int change_pos_x;
+		int padding;
+		Vector2f movetext;
+		Vector2f movetextkey;
+		void selectiondisplay(RenderWindow &window);
+		bool mouseontextselection(RenderWindow &window, Text &text, Text &text2);
+		Font retro;
+		Text header;
+		Text back;
+		Text savetext;
+		Text defaulttext;
+		Text moveup;
+		Text movedown;
+		Text moveright;
+		Text moveleft;
+		Text sprint;
+		Text firemode;
+		Text antialiasingtext;
+		Text antialiasingvalue;
+		Text volumetext;
+		Text volumetextvalue;
+		Text level;
+		Text longestkey;
+		Text moveupkey;
+		Text movedownkey;
+		Text moverightkey;
+		Text moveleftkey;
+		Text sprintkey;
+		Text firemodekey;
+		Text languagetext;
+		Text longestlang;
+		Text lang;
+		Text duplicate;
+		Text fullscreen;
+		string languageselection[25];
+		RectangleShape selection;
+		RectangleShape change;
+		RectangleShape selected;
+		RectangleShape changed;
+		RectangleShape antialiasingslider;
+		RectangleShape antialiasingcase;
+		RectangleShape antialiasingcaselevel;
+		RectangleShape cleaner;
+		RectangleShape volumecase;
+		RectangleShape volumecaselevel;
+		RectangleShape fullscreen_frame;
+		Text caution;
+		CircleShape leftlanguage;
+		CircleShape rightlanguage;
+		bool ischanged(Text &text);
+		void save();
+		void read();
+		void default();
+		void setstring(Text &text, int key, int where);
+		ContextSettings settings;
+		Color background;
+		bool mouseontext(RenderWindow &window, Text &text);
+		bool mouseonshapecircle(RenderWindow &window, CircleShape &shape);
+		bool mouseonshaperectangle(RenderWindow &window, RectangleShape &shape);
+		int numberoflangauges();
+		int longestlanguage();
+		void movelanguage(bool direction, RenderWindow &window);
+		void positioning(RenderWindow &window);
+		void setantialiasingslider(int value);
+		void setvolumeslider(int value);
+		void volumeslidermove(RenderWindow &window);
+		void antialiasingslidermove(RenderWindow &window);
+		void clean(RenderWindow &window, Text &text);
+		bool altialiasingchanged();
+		int levelanti;
+		int levelvolume;
+		int size(RenderWindow &window, int value);
+};

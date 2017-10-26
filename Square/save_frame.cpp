@@ -8,19 +8,24 @@
 using namespace sf;
 using namespace std;
 
+
 save_frame::save_frame()
 {
 	frame.setFillColor(Color::White);
+	floppy_tex.loadFromFile("resources\\floppy.png");
+	floppy.setTexture(floppy_tex);
 }
 
 void save_frame::setSize(int size)
 {
 	frame.setSize(Vector2f(size, size));
+	//floppy.setScale(float(float((size) / 100) / floppy_tex.getSize().x), float(float((size) / 100) / floppy_tex.getSize().y));
 }
 
 void save_frame::setPosition(Vector2f position)
 {
 	frame.setPosition(position);
+	floppy.setPosition(position);
 }
 
 FloatRect save_frame::getGlobalBounds()
@@ -44,6 +49,7 @@ void save_frame::onShape(RenderWindow& window)
 void save_frame::display(RenderWindow& window)
 {
 	window.draw(frame);
+	window.draw(floppy);
 }
 
 

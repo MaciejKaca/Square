@@ -19,7 +19,8 @@ save_frame::save_frame()
 void save_frame::setSize(int size)
 {
 	frame.setSize(Vector2f(size, size));
-	//floppy.setScale(float(float((size) / 100) / floppy_tex.getSize().x), float(float((size) / 100) / floppy_tex.getSize().y));
+	//floppy.setScale(float(1),float(1));
+	floppy.setScale(float(float((size) / 100) / floppy_tex.getSize().x), float(float((size) / 100) / floppy_tex.getSize().y));
 }
 
 void save_frame::setPosition(Vector2f position)

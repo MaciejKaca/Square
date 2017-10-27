@@ -42,6 +42,14 @@ void save_frame::onShape(RenderWindow& window)
 	if (frame.getGlobalBounds().contains(mouse))
 	{
 		frame.setFillColor(Color::Red);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			frame.setFillColor(Color(80, 0, 0));
+			window.draw(frame);
+			window.draw(floppy);
+			window.display();
+			while (Mouse::isButtonPressed(Mouse::Left));
+		}
 	}
 	else
 	{
@@ -49,10 +57,13 @@ void save_frame::onShape(RenderWindow& window)
 	}
 }
 
+void save_frame::setFillColor(Color color)
+{
+	frame.setFillColor(color);
+}
+
 void save_frame::display(RenderWindow& window)
 {
 	window.draw(frame);
 	window.draw(floppy);
 }
-
-

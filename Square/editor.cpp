@@ -15,7 +15,7 @@ using namespace sf;
 using namespace std;
 text_input map_name;
 help help_frame;
-save_frame save_;
+save_frame save_button;
 editor::editor()
 {
 	numberofobstacles = 0;
@@ -53,8 +53,8 @@ void editor::positioning(RenderWindow &window)
 	help_frame.background_position(Vector2f((window.getSize().x/2)-(help_frame.background_bounds().width/2), ((window.getSize().y - menu_frame.getGlobalBounds().height) / 2) - (help_frame.background_bounds().height / 2)));
 	map_name.setSize(Vector2f((40 * window.getSize().x) / 100,help_frame.getGlobalBounds().height));
 	map_name.setPosition(Vector2f(help_frame.getGlobalBounds().width + help_frame.getPosition().x + (1 * window.getSize().x) / 100, help_frame.getPosition().y));
-	save_.setSize(help_frame.getGlobalBounds().width);
-	save_.setPosition(Vector2f(map_name.getGlobalBounds().width+map_name.getPosition().x+ (1 * window.getSize().x) / 100, help_frame.getPosition().y));
+	save_button.setSize(help_frame.getGlobalBounds().width);
+	save_button.setPosition(Vector2f(map_name.getGlobalBounds().width+map_name.getPosition().x+ (1 * window.getSize().x) / 100, help_frame.getPosition().y));
 }
 
 void editor::create(RenderWindow &window)
@@ -210,17 +210,30 @@ void editor::open(RenderWindow &window)
 
 void editor::save(RenderWindow &window)
 {
-	ofstream map;
-	map.open("maps\\map.dat");
-	map << obstacle.size() << endl;
-	for (int i = 0; i < obstacle.size(); i++)
+	if (map_name.getString().length() > 0)
 	{
-		map << (obstacle.at(i).getPosition().x * 100) / window.getSize().x << endl;
-		map << (obstacle.at(i).getPosition().y * 100) / window.getSize().y << endl;
-		map << (obstacle.at(i).getGlobalBounds().width * 100) / window.getSize().x << endl;
-		map << (obstacle.at(i).getGlobalBounds().height * 100) / window.getSize().y << endl;
+		ofstream map;
+		string name;
+		name = "maps\\" + map_name.getString() + ".map";
+		map.open(name);
+		map << obstacle.size() << endl;
+		for (int i = 0; i < obstacle.size(); i++)
+		{
+			map << (obstacle.at(i).getPosition().x * 100) / window.getSize().x << endl;
+			map << (obstacle.at(i).getPosition().y * 100) / window.getSize().y << endl;
+			map << (obstacle.at(i).getGlobalBounds().width * 100) / window.getSize().x << endl;
+			map << (obstacle.at(i).getGlobalBounds().height * 100) / window.getSize().y << endl;
+		}
+		map.close();
 	}
-	map.close();
+	else
+	{
+		map_name.setString("Empty!!!");
+		map_name.draw(window);
+		window.display();
+		while (Mouse::isButtonPressed(sf::Mouse::Left));
+		map_name.setString("");
+	}
 }
 
 void editor::draw(RenderWindow &window)
@@ -256,7 +269,7 @@ void editor::draw(RenderWindow &window)
 	window.draw(menu_frame);
 	help_frame.display(window);
 	map_name.draw(window);
-	save_.display(window);
+	save_button.display(window);
 	window.display();
 }
 
@@ -299,9 +312,12 @@ int editor::display(RenderWindow &window, bool mode)
 			{
 					map_name.remove();
 			}
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 			{
-				save(window);
+				if (mouseonshape(window, save_button.getGlobalBounds()))
+				{
+					save(window);
+				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 			{
@@ -539,7 +555,7 @@ int editor::display(RenderWindow &window, bool mode)
 			}
 		}
 		help_frame.onShape(window);
-		save_.onShape(window);
+		save_button.onShape(window);
 		draw(window);
 	}
 }

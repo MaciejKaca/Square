@@ -16,6 +16,8 @@ class text_input
 		Vector2f getPosition();
 		FloatRect getGlobalBounds();
 		Color getColor();
+		void empty();
+		void load();
 	private:
 		int lenght();
 		int textsize(int height);
@@ -23,4 +25,5 @@ class text_input
 		Text name;
 		RectangleShape frame;
 		Text test;
+		string empty_string;
 };

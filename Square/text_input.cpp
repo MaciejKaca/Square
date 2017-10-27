@@ -1,6 +1,8 @@
 #include "Text_input.h"
 #include <SFML\Graphics.hpp>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include <iostream>
 using namespace std;
 text_input::text_input()
@@ -11,9 +13,39 @@ text_input::text_input()
 	frame.setFillColor(Color::White);
 }
 
+void text_input::load()
+{
+	string text;
+	ifstream lang;
+	lang.open("settings\\language.dat");
+	if (lang.is_open() == 1)
+	{
+		getline(lang, text);
+		lang.close();
+	}
+	int i;
+	string source;
+	source = "lang\\";
+	source += text;
+	source += ".dat";
+	lang.open(source.c_str());
+	if (lang.is_open() == 1)
+	{
+		for (i = 1; i <= 27; i++)
+			getline(lang, empty_string);
+	}
+
+}
+
+
 void text_input::setString(string text)
 {
 	name.setString(text);
+}
+
+void text_input::empty()
+{
+	name.setString(empty_string);
 }
 
 void text_input::add(char text)

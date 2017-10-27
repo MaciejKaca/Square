@@ -210,8 +210,6 @@ void editor::open(RenderWindow &window)
 
 void editor::save(RenderWindow &window)
 {
-	if (map_name.getString().length() > 0)
-	{
 		ofstream map;
 		string name;
 		name = "maps\\" + map_name.getString() + ".map";
@@ -225,15 +223,6 @@ void editor::save(RenderWindow &window)
 			map << (obstacle.at(i).getGlobalBounds().height * 100) / window.getSize().y << endl;
 		}
 		map.close();
-	}
-	else
-	{
-		map_name.setString("Empty!!!");
-		map_name.draw(window);
-		window.display();
-		while (Mouse::isButtonPressed(sf::Mouse::Left));
-		map_name.setString("");
-	}
 }
 
 void editor::draw(RenderWindow &window)
@@ -282,6 +271,7 @@ int editor::display(RenderWindow &window, bool mode)
 {
 	help_frame.load();
 	obstacle.clear();
+	map_name.load();
 	if (mode == 1)
 	{
 		open(window);
@@ -316,7 +306,20 @@ int editor::display(RenderWindow &window, bool mode)
 			{
 				if (mouseonshape(window, save_button.getGlobalBounds()))
 				{
-					save(window);
+					save_button.setFillColor(Color(80, 0, 0));
+					save_button.display(window);
+					if (map_name.getString().length() <= 0)
+					{
+						map_name.empty();
+						map_name.draw(window);
+					}
+					else
+					{
+						save(window);
+					}
+					window.display();
+					while (Mouse::isButtonPressed(Mouse::Left));
+					map_name.setString("");
 				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)

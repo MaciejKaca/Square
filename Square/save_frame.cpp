@@ -21,13 +21,14 @@ void save_frame::setSize(int size)
 	cout << floppy_tex.getSize().x;
 	frame.setSize(Vector2f(size, size));
 	//floppy.setScale(float(1),float(1));
-	floppy.setScale(float(float(size)/float(floppy_tex.getSize().x)), float(float(size) / float(floppy_tex.getSize().y)));
+	floppy.setScale(float(float(size)/float(floppy_tex.getSize().x))*0.8, float(float(size) / float(floppy_tex.getSize().y))*0.8);
 }
 
 void save_frame::setPosition(Vector2f position)
 {
 	frame.setPosition(position);
-	floppy.setPosition(position);
+	floppy.setPosition(Vector2f(position.x+(frame.getSize().x-floppy.getGlobalBounds().width)/2, 
+	position.y + (frame.getSize().y - floppy.getGlobalBounds().height) / 2));
 }
 
 FloatRect save_frame::getGlobalBounds()

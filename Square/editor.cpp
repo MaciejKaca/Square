@@ -312,6 +312,7 @@ int editor::display(RenderWindow &window, bool mode)
 					{
 						map_name.empty();
 						map_name.draw(window);
+						map_name.setString("");
 					}
 					else
 					{
@@ -319,7 +320,6 @@ int editor::display(RenderWindow &window, bool mode)
 					}
 					window.display();
 					while (Mouse::isButtonPressed(Mouse::Left));
-					map_name.setString("");
 				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)

@@ -18,7 +18,6 @@ save_frame::save_frame()
 
 void save_frame::setSize(int size)
 {
-	cout << floppy_tex.getSize().x;
 	frame.setSize(Vector2f(size, size));
 	//floppy.setScale(float(1),float(1));
 	floppy.setScale(float(float(size)/float(floppy_tex.getSize().x))*0.8, float(float(size) / float(floppy_tex.getSize().y))*0.8);

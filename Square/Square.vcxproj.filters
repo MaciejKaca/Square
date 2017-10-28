@@ -45,6 +45,9 @@
     <ClCompile Include="weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="saving_animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="saving_animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

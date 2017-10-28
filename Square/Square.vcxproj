@@ -127,6 +127,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="options.cpp" />
     <ClCompile Include="save_frame.cpp" />
+    <ClCompile Include="saving_animation.cpp" />
     <ClCompile Include="text_input.cpp" />
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="options.h" />
     <ClInclude Include="save_frame.h" />
+    <ClInclude Include="saving_animation.h" />
     <ClInclude Include="Text_input.h" />
     <ClInclude Include="weapon.h" />
   </ItemGroup>

@@ -10,4 +10,5 @@ public:
 	void setPosition(Vector2f(position));
 	void setSize(int size);
 private:
-	RectangleShape column;};
+	RectangleShape column;
+};

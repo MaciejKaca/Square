@@ -5,8 +5,9 @@ using namespace std;
 class saving_animation
 {
 public:
-	void start();
+	saving_animation();
+	void animation();
 	void setPosition(Vector2f(position));
+	void setSize(int size);
 private:
-	RectangleShape column;
-};
+	RectangleShape column;};

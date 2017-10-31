@@ -1,6 +1,5 @@
 #include "saving_animation.h"
 #include <SFML\Graphics.hpp>
-#include <SFML\System.hpp>
 #include <iostream>
 #include <string>
 #include <fstream>

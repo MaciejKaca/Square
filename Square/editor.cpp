@@ -11,8 +11,10 @@
 #include <string>
 #include <stdio.h>
 #include "save_frame.h"
+#include "saving_animation.h"
 using namespace sf;
 using namespace std;
+saving_animation animation;
 text_input map_name;
 help help_frame;
 save_frame save_button;
@@ -55,6 +57,8 @@ void editor::positioning(RenderWindow &window)
 	map_name.setPosition(Vector2f(help_frame.getGlobalBounds().width + help_frame.getPosition().x + (1 * window.getSize().x) / 100, help_frame.getPosition().y));
 	save_button.setSize(help_frame.getGlobalBounds().width);
 	save_button.setPosition(Vector2f(map_name.getGlobalBounds().width+map_name.getPosition().x+ (1 * window.getSize().x) / 100, help_frame.getPosition().y));
+	animation.setSize(save_button.getGlobalBounds().width);
+	animation.setPosition(save_button.getPosition());
 }
 
 void editor::create(RenderWindow &window)

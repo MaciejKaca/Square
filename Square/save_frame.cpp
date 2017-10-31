@@ -35,6 +35,11 @@ FloatRect save_frame::getGlobalBounds()
 	return frame.getGlobalBounds();
 }
 
+Vector2f save_frame::getPosition()
+{
+	return frame.getPosition();
+}
+
 void save_frame::onShape(RenderWindow& window)
 {
 	Vector2f mouse(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
